@@ -4,6 +4,7 @@ import com.charboard.www.charboard.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -116,6 +117,11 @@ public class Help extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.OK).setOnTouchListener(mDelayHideTouchListener);
+    }
+
+    public void returnMenu(View view) {
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
     }
 
     @Override
