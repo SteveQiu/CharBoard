@@ -122,10 +122,10 @@ public class Menu extends Activity {
         startActivity(intent);
     }
 
-//    public void startGame(View view) {
-//        Intent intent = new Intent(this, Game.class);
-//        startActivity(intent);
-//    }
+    public void startGame(View view) {
+        Intent intent = new Intent(this, Game.class);
+        startActivity(intent);
+    }
 
 
     @Override

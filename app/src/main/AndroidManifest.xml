@@ -28,6 +28,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.charboard.www.charboard.Menu" />
         </activity>
+        <activity
+            android:name=".Game"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_game"
+            android:parentActivityName=".Menu"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charboard.www.charboard.Menu" />
+        </activity>
     </application>
 
 </manifest>
