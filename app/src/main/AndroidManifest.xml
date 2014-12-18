@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Help"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".Menu"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.charboard.www.charboard.Menu" />
+        </activity>
     </application>
 
 </manifest>

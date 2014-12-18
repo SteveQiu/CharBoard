@@ -4,12 +4,13 @@ import com.charboard.www.charboard.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.MenuItem;
+import android.support.v4.app.NavUtils;
 
 
 /**
@@ -18,7 +19,7 @@ import android.view.View;
  *
  * @see SystemUiHider
  */
-public class Menu extends Activity {
+public class Help extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -51,7 +52,8 @@ public class Menu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_help);
+        setupActionBar();
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
@@ -113,20 +115,8 @@ public class Menu extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.help_button).setOnTouchListener(mDelayHideTouchListener);
-        findViewById(R.id.start_game_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
-
-    public void startHelp(View view) {
-        Intent intent = new Intent(this, Help.class);
-        startActivity(intent);
-    }
-
-//    public void startGame(View view) {
-//        Intent intent = new Intent(this, Game.class);
-//        startActivity(intent);
-//    }
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -138,6 +128,35 @@ public class Menu extends Activity {
         delayedHide(100);
     }
 
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private void setupActionBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            // Show the Up button in the action bar.
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            // TODO: If Settings has multiple levels, Up should navigate up
+            // that hierarchy.
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
