@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Charboard</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="start_game">Start Game</string>
+    <string name="title_activity_game">Game</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Charboard">CharBoard</string>
+    <string name="Help">Help</string>
+    <string name="title_activity_help">Help</string>
+    <string name="OK">Okay!</string>
+    <string name="Help_Explaination">Each charm will have 4 areas open to place a new charm(left, right, top, bottom).\n\n 4 different charms in a row or in a columns will earn you a point and vanish.\n\n Game ends when you can\'t place any new charms.</string>
+
+</resources>
