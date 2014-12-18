@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
 
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -47,6 +48,10 @@ public class Game extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
+
+    //custom variable
+    private Board board;
+    private Charm charm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +120,14 @@ public class Game extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.restart_button).setOnTouchListener(mDelayHideTouchListener);
+
+        //Game configure
+        charm = new Charm();
+        board = new Board();
     }
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

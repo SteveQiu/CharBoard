@@ -13,5 +13,6 @@
     <string name="title_activity_help">Help</string>
     <string name="OK">Okay!</string>
     <string name="Help_Explaination">Each charm will have 4 areas open to place a new charm(left, right, top, bottom).\n\n 4 different charms in a row or in a columns will earn you a point and vanish.\n\n Game ends when you can\'t place any new charms.</string>
+    <string name="restart">Restart</string>
 
 </resources>
