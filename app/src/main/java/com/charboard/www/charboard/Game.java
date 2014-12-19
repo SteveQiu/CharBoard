@@ -47,7 +47,7 @@ public class Game extends Activity {
     /**
      * The instance of the {@link SystemUiHider} for this activity.
      */
-    private SystemUiHider mSystemUiHider;
+//    private SystemUiHider mSystemUiHider;
 
     //custom variable
     private Board board;
@@ -60,9 +60,9 @@ public class Game extends Activity {
         setContentView(R.layout.activity_game);
         setupActionBar();
 
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
+//        final View controlsView = findViewById(R.id.fullscreen_content_controls);
         View contentView = findViewById(R.id.fullscreen_content);
-
+/*
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
@@ -121,7 +121,7 @@ public class Game extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.restart_button).setOnTouchListener(mDelayHideTouchListener);
-
+*/
         //Game configure
         charm = new Charm();
         board = new Board(charm.pop());
@@ -141,7 +141,7 @@ public class Game extends Activity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+//        delayedHide(100);
     }
 
     /**
@@ -166,7 +166,7 @@ public class Game extends Activity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            // TODO: If Settings has multiple levels, Up should navigate up
+            // If Settings has multiple levels, Up should navigate up
             // that hierarchy.
             NavUtils.navigateUpFromSameTask(this);
             return true;
@@ -179,6 +179,7 @@ public class Game extends Activity {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
+    /*
     View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -201,8 +202,10 @@ public class Game extends Activity {
      * Schedules a call to hide() in [delay] milliseconds, canceling any
      * previously scheduled calls.
      */
+   /*
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+    */
 }

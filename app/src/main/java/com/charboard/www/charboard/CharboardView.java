@@ -106,10 +106,11 @@ public class CharboardView extends View {
         int contentHeight = getHeight() - paddingTop - paddingBottom;
 
         // Draw the text.
-        canvas.drawText(mExampleString,
-                paddingLeft + (contentWidth - mTextWidth) / 2,
-                paddingTop + (contentHeight + mTextHeight) / 2,
-                mTextPaint);
+//        canvas.drawText(mExampleString,
+//                paddingLeft + (contentWidth - mTextWidth) / 2,
+//                paddingTop + (contentHeight + mTextHeight) / 2,
+//                mTextPaint);
+
 
         // Draw the example drawable on top of the text.
         if (mExampleDrawable != null) {
@@ -118,7 +119,14 @@ public class CharboardView extends View {
             mExampleDrawable.draw(canvas);
         }
 
-        //Gaming Graphics
+
+
+        canvas.drawText("Score: "+ Integer.toString(board.score),
+                getWidth()*2/10,
+                getHeight()*8/10,
+                mTextPaint);
+
+        //************************START OF GAME GRAPHICS***********************
         //Draw on top of background
         if(board!=null){
             for(int j=0;j<5;j++) {
@@ -132,6 +140,8 @@ public class CharboardView extends View {
                 putCharm(charm.getCharm(i),i,canvas);
             }
         }
+
+        //************************END OF GAME GRAPHICS***************************
     }
 
     public int getId(int num){
