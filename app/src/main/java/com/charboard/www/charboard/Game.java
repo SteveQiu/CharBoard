@@ -124,7 +124,7 @@ public class Game extends Activity {
 
         //Game configure
         charm = new Charm();
-        board = new Board();
+        board = new Board(charm.pop());
 
         CharboardView charboardView = (CharboardView)contentView;
         charboardView.setBoard(board);

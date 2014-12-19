@@ -152,13 +152,13 @@ public class CharboardView extends View {
     public void putBoard(int num, int x, int y,Canvas canvas){
         int id;
         id= getId(num);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*x/10, getHeight()*y/10, null);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
     }
 
     public void putCharm(int num, int position,Canvas canvas){
         int id;
         id= getId(num);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*7/10, getHeight()*position/10, null);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+1)/10, null);
     }
 
 
