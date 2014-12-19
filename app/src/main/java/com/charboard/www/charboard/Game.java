@@ -129,7 +129,7 @@ public class Game extends Activity {
         charboardView = (CharboardView)findViewById(R.id.fullscreen_content);
 
         updateCharBoard();
-
+        //take input events and updates
         charboardView.setOnTouchListener(inputListener);
     }
 
@@ -186,11 +186,18 @@ public class Game extends Activity {
             //TODO: on touch action. True if the listener has consumed the event, false otherwise
 //            int i = motionEvent.getAction();
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                int x,y;
+                int x,y,bw,bh; //480 * 800; x range 96~336; avg x 48; y range 160~560; avg y 80;
                 y =(int) motionEvent.getRawY();
                 x= (int) motionEvent.getRawX();
-                board.score= x;
-                updateCharBoard();
+                bw=charboardView.getWidth();
+                bh=charboardView.getHeight();
+
+                if((bw*2/10)<=x && x<= (bw*7/10) && (bh*2/10)<=y&& y<= (bh*7/10) ){
+                    charm.pop();
+                    board.score= x;
+                    board.highestScore =y;
+                    updateCharBoard();
+                }
             }
             return false;
         }

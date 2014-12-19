@@ -126,6 +126,10 @@ public class CharboardView extends View {
                 getWidth()*2/10,
                 getHeight()*8/10,
                 mTextPaint);
+        canvas.drawText("Highest: " + Integer.toString(board.highestScore),
+                getWidth()*2/10,
+                getHeight()*9/10,
+                mTextPaint);
 
         //Draw on top of background
         if(board!=null){
@@ -168,7 +172,10 @@ public class CharboardView extends View {
     public void putCharm(int num, int position,Canvas canvas){
         int id;
         id= getId(num);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+1)/10, null);
+        if(position==0)
+            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/8, getWidth()/8, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
+        else
+            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
     }
 
 

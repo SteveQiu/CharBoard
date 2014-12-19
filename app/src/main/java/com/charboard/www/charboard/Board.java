@@ -5,7 +5,8 @@ package com.charboard.www.charboard;
  */
 
 public class Board {
-    public int score;
+    public int score=0;
+    public int highestScore=0;
     protected int[][] board;
     static int na = 0;
     static int a= 1;
