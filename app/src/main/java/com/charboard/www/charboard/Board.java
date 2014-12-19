@@ -108,12 +108,13 @@ public class Board {
                 addPoint();
                 //clear
                 for(int sub=0;sub <4;sub++){
-                    board[i+sub][y]=na;
+                    board[i+sub][y]=a;
+//                    board[i+sub][y]=na;
                 }
                 //restore available area
-                for(int sub=0;sub <4;sub++){
-                    restore(i+sub,y,0);
-                }
+//                for(int sub=0;sub <4;sub++){
+//                    restore(i+sub,y,0);
+//                }
             }
         }
 
@@ -136,12 +137,13 @@ public class Board {
             if(c1&&c2&&c3&&c4){
                 addPoint();
                 for(int sub=0;sub <4;sub++){
-                    board[x][j+sub]=na;
+                    board[x][j+sub]=a;
+//                    board[x][j+sub]=na;
                 }
                 //restore available area
-                for(int sub=0;sub <4;sub++){
-                    restore(x,j+sub,0);
-                }
+//                for(int sub=0;sub <4;sub++){
+//                    restore(x,j+sub,0);
+//                }
             }
         }
 
@@ -151,7 +153,7 @@ public class Board {
         return board[num1][num2];
     }
 
-    public void placeCharm(int num1, int num2,int colour){
+    public boolean placeCharm(int num1, int num2,int colour){
         if (dropAvailable(num1,num2)){
             set(num1,num2,colour);
             //change availability
@@ -167,8 +169,10 @@ public class Board {
             if( 0<=(num2-1)&&(num2-1)<=4)
                 if(dropNotAvailable(num1,(num2-1)))
                     set(num1,(num2-1), a);
+            checker(num1,num2);
+            return true;
         }
-        checker(num1,num2);
+        return false;
     }
 
     public void showBoard(){

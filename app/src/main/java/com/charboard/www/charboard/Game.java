@@ -192,10 +192,14 @@ public class Game extends Activity {
                 bw=charboardView.getWidth();
                 bh=charboardView.getHeight();
 
-                if((bw*2/10)<=x && x<= (bw*7/10) && (bh*2/10)<=y&& y<= (bh*7/10) ){
-                    charm.pop();
-                    board.score= x;
-                    board.highestScore =y;
+                if((bw*2/10)<=x && x< (bw*7/10) && (bh*2/10)<=y&& y< (bh*7/10) ){
+                    int num1 = (int) Math.floor(x/(bw/10)-2);
+                    int num2 = (int) Math.floor(y/(bh/10)-2);
+//                    charm.pop();
+//                    board.score= num1;
+//                    board.highestScore =num2;
+                    if (board.placeCharm(num1, num2, charm.getCharm(0)))
+                        charm.pop();
                     updateCharBoard();
                 }
             }
