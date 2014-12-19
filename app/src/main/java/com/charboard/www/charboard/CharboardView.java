@@ -17,6 +17,11 @@ import android.view.View;
  * TODO: document your custom view class.
  */
 public class CharboardView extends View {
+
+    //custom variable
+    private Board board;
+    private Charm charm;
+
     private String mExampleString; // TODO: use a default from R.string...
     private int mExampleColor = Color.RED; // TODO: use a default from R.color...
     private float mExampleDimension = 0; // TODO: use a default from R.dimen...
@@ -115,7 +120,66 @@ public class CharboardView extends View {
 
         //Gaming Graphics
         //Draw on top of background
-//        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.charm_a), getWidth()/10, getWidth()/10, false), getWidth()*1/8, getHeight()*1/8, null);
+        if(board!=null){
+            for(int j=0;j<5;j++) {
+                for (int i=0;i<5;i++){
+                    putBoard(board.get(i,j),i,j,canvas);
+                }
+            }
+        }
+        if(charm!=null){
+            for(int i=0;i<7;i++){
+                putCharm(charm.getCharm(i),i,canvas);
+            }
+        }
+    }
+
+    public int getId(int num){
+        if(num==1)
+            return R.drawable.charm_a;
+        else if(num==2)
+            return R.drawable.charm_purple;
+        else if(num==3)
+            return R.drawable.charm_red;
+        else if(num==4)
+            return R.drawable.charm_blue;
+        else if(num==5)
+            return R.drawable.charm_green;
+        else
+            return R.drawable.charm_na;
+    }
+
+    public void putBoard(int num, int x, int y,Canvas canvas){
+        int id;
+        id= getId(num);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*x/10, getHeight()*y/10, null);
+    }
+
+    public void putCharm(int num, int position,Canvas canvas){
+        int id;
+        id= getId(num);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*7/10, getHeight()*position/10, null);
+    }
+
+
+    public boolean setBoard(Board newBoard){
+        if(newBoard !=null){
+            board = newBoard;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean setCharm(Charm newCharm){
+        if(newCharm !=null){
+            charm = newCharm;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

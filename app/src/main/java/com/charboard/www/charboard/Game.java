@@ -61,7 +61,7 @@ public class Game extends Activity {
         setupActionBar();
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_content);
+        View contentView = findViewById(R.id.fullscreen_content);
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -125,6 +125,11 @@ public class Game extends Activity {
         //Game configure
         charm = new Charm();
         board = new Board();
+
+        CharboardView charboardView = (CharboardView)contentView;
+        charboardView.setBoard(board);
+        charboardView.setCharm(charm);
+        charboardView.invalidate();
     }
 
 
