@@ -22,9 +22,9 @@ public class CharboardView extends View {
     private Board board;
     private Charm charm;
 
-    private String mExampleString; // TODO: use a default from R.string...
-    private int mExampleColor = Color.RED; // TODO: use a default from R.color...
-    private float mExampleDimension = 0; // TODO: use a default from R.dimen...
+    private String mExampleString; //TODO: use a default from R.string...
+    private int mExampleColor = Color.WHITE; //TODO: use a default from R.color...
+    private float mExampleDimension = 0; //TODO: use a default from R.dimen...
     private Drawable mExampleDrawable;
 
     private TextPaint mTextPaint;
@@ -49,7 +49,8 @@ public class CharboardView extends View {
 
     //initialize local attributes and variables
     private void init(AttributeSet attrs, int defStyle, Context context) {
-
+        //set up local variable
+        board = new Board();
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.CharboardView, defStyle, 0);
@@ -95,7 +96,7 @@ public class CharboardView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // TODO: consider storing these as member variables to reduce
+        // consider storing these as member variables to reduce
         // allocations per draw cycle.
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
@@ -119,14 +120,13 @@ public class CharboardView extends View {
             mExampleDrawable.draw(canvas);
         }
 
-
+        //************************START OF GAME GRAPHICS***********************
 
         canvas.drawText("Score: "+ Integer.toString(board.score),
                 getWidth()*2/10,
                 getHeight()*8/10,
                 mTextPaint);
 
-        //************************START OF GAME GRAPHICS***********************
         //Draw on top of background
         if(board!=null){
             for(int j=0;j<5;j++) {

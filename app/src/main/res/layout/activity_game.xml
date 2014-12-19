@@ -1,7 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent" android:background="#0099cc"
-    tools:context="com.charboard.www.charboard.Game">
+    tools:context="com.charboard.www.charboard.Game"
+    android:clickable="true"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -11,24 +14,28 @@
         android:layout_width="match_parent" android:layout_height="match_parent" android:paddingLeft="0dp"
         android:paddingBottom="0dp" app:exampleDimension="24sp" app:exampleColor="#fff"
         app:exampleString=""
-        app:exampleDrawable="@drawable/background2" />
+        app:exampleDrawable="@drawable/background2"
+        android:clickable="true"
+        android:longClickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false" />
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+    <!--&lt;!&ndash; This FrameLayout insets its children based on system windows using-->
+         <!--android:fitsSystemWindows. &ndash;&gt;-->
+    <!--<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"-->
+        <!--android:fitsSystemWindows="true">-->
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
+        <!--<LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"-->
+            <!--android:layout_width="match_parent" android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|center_horizontal"-->
+            <!--android:background="@color/black_overlay" android:orientation="horizontal"-->
+            <!--tools:ignore="UselessParent">-->
 
-            <Button android:id="@+id/restart_button" style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/restart" />
+            <!--<Button android:id="@+id/restart_button" style="?metaButtonBarButtonStyle"-->
+                <!--android:layout_width="0dp" android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1" android:text="@string/restart" />-->
 
-        </LinearLayout>
-    </FrameLayout>
+        <!--</LinearLayout>-->
+    <!--</FrameLayout>-->
 
 </FrameLayout>

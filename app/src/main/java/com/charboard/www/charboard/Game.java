@@ -52,6 +52,7 @@ public class Game extends Activity {
     //custom variable
     private Board board;
     private Charm charm;
+    private CharboardView charboardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +60,10 @@ public class Game extends Activity {
 
         setContentView(R.layout.activity_game);
         setupActionBar();
-
+/*
 //        final View controlsView = findViewById(R.id.fullscreen_content_controls);
         View contentView = findViewById(R.id.fullscreen_content);
-/*
+
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
@@ -125,14 +126,18 @@ public class Game extends Activity {
         //Game configure
         charm = new Charm();
         board = new Board(charm.pop());
+        charboardView = (CharboardView)findViewById(R.id.fullscreen_content);
 
-        CharboardView charboardView = (CharboardView)contentView;
+        updateCharBoard();
+
+        charboardView.setOnTouchListener(inputListener);
+    }
+
+    private void updateCharBoard(){
         charboardView.setBoard(board);
         charboardView.setCharm(charm);
         charboardView.invalidate();
     }
-
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -173,6 +178,23 @@ public class Game extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Listen On touch
+    View.OnTouchListener inputListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            //TODO: on touch action. True if the listener has consumed the event, false otherwise
+//            int i = motionEvent.getAction();
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                int x,y;
+                y =(int) motionEvent.getRawY();
+                x= (int) motionEvent.getRawX();
+                board.score= x;
+                updateCharBoard();
+            }
+            return false;
+        }
+    };
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
