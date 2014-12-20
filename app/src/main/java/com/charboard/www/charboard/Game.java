@@ -54,6 +54,7 @@ public class Game extends Activity {
     private Charm charm;
     private CharboardView charboardView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +132,9 @@ public class Game extends Activity {
         updateCharBoard();
         //take input events and updates
         charboardView.setOnTouchListener(inputListener);
+
+        //save score configure
+
     }
 
     private void updateCharBoard(){
@@ -179,11 +183,17 @@ public class Game extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        charboardView.destroy();
+    }
+
     //Listen On touch
     View.OnTouchListener inputListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            //TODO: on touch action. True if the listener has consumed the event, false otherwise
+            //On touch action. True if the listener has consumed the event, false otherwise
 //            int i = motionEvent.getAction();
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 int x,y,bw,bh; //480 * 800; x range 96~336; avg x 48; y range 160~560; avg y 80;
@@ -201,6 +211,7 @@ public class Game extends Activity {
                     if (board.placeCharm(num1, num2, charm.getCharm(0)))
                         charm.pop();
                     updateCharBoard();
+
                 }
             }
             return false;

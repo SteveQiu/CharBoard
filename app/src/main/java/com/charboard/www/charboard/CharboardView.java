@@ -22,7 +22,6 @@ public class CharboardView extends View {
     private Board board;
     private Charm charm;
     Bitmap charmA,charmNa,charmPurple,charmBlue,charmGreen,charmRed;
-    private Drawable restartDrawable;
 
     //default
     private String mExampleString; //TODO: use a default from R.string...
@@ -140,13 +139,6 @@ public class CharboardView extends View {
 //                getWidth()*2/10,
 //                getHeight()*9/10,
 //                mTextPaint);
-
-        //@android:drawable/ic_menu_revert
-        if (mExampleDrawable != null) {
-            mExampleDrawable.setBounds(paddingLeft, paddingTop,
-                    paddingLeft + contentWidth, paddingTop + contentHeight);
-            mExampleDrawable.draw(canvas);
-        }
 
         //Draw on top of background
         if(board!=null){
@@ -306,5 +298,14 @@ public class CharboardView extends View {
      */
     public void setExampleDrawable(Drawable exampleDrawable) {
         mExampleDrawable = exampleDrawable;
+    }
+
+    public void destroy(){
+        charmA= null;
+        charmNa= null;
+        charmPurple = null;
+        charmBlue = null;
+        charmGreen= null;
+        charmRed= null;
     }
 }
