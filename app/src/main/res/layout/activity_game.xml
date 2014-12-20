@@ -17,7 +17,7 @@
         app:exampleDrawable="@drawable/background2"
         android:clickable="true"
         android:longClickable="false"
-        android:focusableInTouchMode="false"
+        android:focusableInTouchMode="true"
         android:focusable="false" />
 
     <!--&lt;!&ndash; This FrameLayout insets its children based on system windows using-->

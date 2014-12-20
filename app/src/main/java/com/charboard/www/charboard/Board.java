@@ -43,51 +43,46 @@ public class Board {
         score++;
     }
 
-    public void restore(int x, int y, int count){
-        if(count<2){
-            if( 1<=x && x<=3&& 1 <=y && y <=3){
-                if(board[x+1][y]>a||board[x-1][y]>a||board[x][y+1]>a||board[x][y-1]>a)
-                    board[x][y]=a;
+    public void restore(){
+        //clear all available area
+        for(int y=0;y<5;y++)
+            for(int x=0;x<5;x++){
+                if(board[x][y]==a)
+                    board[x][y]=na;
             }
-            if(x==0){
-                if(board[x+1][y]>a||board[x][y+1]>a||board[x][y-1]>a)
-                    board[x][y]=a;
-            }
-            if(x==4){
-                if(board[x-1][y]>a||board[x][y+1]>a||board[x][y-1]>a)
-                    board[x][y]=a;
-            }
-            if(y==0){
-                if(board[x+1][y]>a||board[x-1][y]>a||board[x][y+1]>a)
-                    board[x][y]=a;
-            }
-            if(y==4){
-                if(board[x+1][y]>a||board[x-1][y]>a||board[x][y-1]>a)
-                    board[x][y]=a;
-            }
-            if(count==0){
-                if(x<4){
-                    board[x+1][y]=na;
-                    restore(x+1,y,count+1);
+
+        for(int y=0;y<5;y++)
+            for(int x=0;x<5;x++){
+                //if the area has a charm, it can influence the 4 boxes around it
+                if (board[x][y]>a){
+                    if (x<4)
+                        if(board[x+1][y]==na)
+                            board[x+1][y]=a;
+                    if (x>0)
+                        if(board[x-1][y]==na)
+                            board[x-1][y]=a;
+                    if (y<4)
+                        if(board[x][y+1]==na)
+                            board[x][y+1]=a;
+                    if (y>0)
+                        if(board[x][y-1]==na)
+                            board[x][y-1]=a;
                 }
-                if(x>0){
-                    board[x-1][y]=na;
-                    restore(x-1,y,count+1);
-                }
-                if(y<4){
-                    board[x][y+1]=na;
-                    restore(x,y+1,count+1);
-                }
-                if(y>0){
-                    board[x][y-1]=na;
-                    restore(x,y-1,count+1);
-                }
+//                if( 1<=x && x<=3&& 1 <=y && y <=3){
+//                    if(board[x+1][y]>a||board[x-1][y]>a||board[x][y+1]>a||board[x][y-1]>a)
+//                else if(x==0){
+//                    if(1<=y&&y<=3)
+//                        if(board[x+1][y]>a||board[x][y+1]>a||board[x][y-1]>a)
+//                        else if(y==0)
+//                            if(board[x+1][y]>a||board[x][y+1]>a)
+//                            else if(y==4)
+//                                if(board[x+1][y]>a||board[x][y-1]>a)
+
             }
-        }
     }
 
     public void checker(int x, int y) {
-        //TODO horizontal check and clear
+        //horizontal clear
         boolean c1,c2,c3,c4;
         for(int i=0;i<2;i++){
             c1=false;
@@ -108,17 +103,13 @@ public class Board {
                 addPoint();
                 //clear
                 for(int sub=0;sub <4;sub++){
-                    board[i+sub][y]=a;
-//                    board[i+sub][y]=na;
+//                    board[i+sub][y]=a;
+                    board[i+sub][y]=na;
                 }
-                //restore available area
-//                for(int sub=0;sub <4;sub++){
-//                    restore(i+sub,y,0);
-//                }
             }
         }
 
-        //TODO vertical
+        // vertical clear
         for(int j=0;j<2;j++){
             c1=false;
             c2=false;
@@ -137,16 +128,15 @@ public class Board {
             if(c1&&c2&&c3&&c4){
                 addPoint();
                 for(int sub=0;sub <4;sub++){
-                    board[x][j+sub]=a;
-//                    board[x][j+sub]=na;
+//                    board[x][j+sub]=a;
+                    board[x][j+sub]=na;
                 }
-                //restore available area
-//                for(int sub=0;sub <4;sub++){
-//                    restore(x,j+sub,0);
-//                }
+
             }
         }
 
+        //restore available area
+        restore();
     }
 
     public int get(int num1, int num2){
