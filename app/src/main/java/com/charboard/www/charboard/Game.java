@@ -187,6 +187,8 @@ public class Game extends Activity {
     protected void onStop(){
         super.onStop();
         charboardView.destroy();
+        board=null;
+        charm=null;
     }
 
     //Listen On touch

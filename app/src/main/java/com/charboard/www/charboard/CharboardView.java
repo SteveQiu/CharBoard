@@ -301,11 +301,15 @@ public class CharboardView extends View {
     }
 
     public void destroy(){
-        charmA= null;
-        charmNa= null;
-        charmPurple = null;
-        charmBlue = null;
-        charmGreen= null;
-        charmRed= null;
+        charmA.recycle();
+        charmNa.recycle();
+        charmPurple.recycle();
+        charmBlue.recycle();
+        charmGreen.recycle();
+        charmRed.recycle();
+        board=null;
+        charm=null;
+        mExampleDrawable=null;
+        mTextPaint=null;
     }
 }
