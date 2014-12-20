@@ -21,36 +21,46 @@ public class CharboardView extends View {
     //custom variable
     private Board board;
     private Charm charm;
+    Bitmap charmA,charmNa,charmPurple,charmBlue,charmGreen,charmRed;
+    private Drawable restartDrawable;
 
+    //default
     private String mExampleString; //TODO: use a default from R.string...
     private int mExampleColor = Color.WHITE; //TODO: use a default from R.color...
     private float mExampleDimension = 0; //TODO: use a default from R.dimen...
     private Drawable mExampleDrawable;
 
     private TextPaint mTextPaint;
-    protected float mTextWidth;
-    protected float mTextHeight;
+    private float mTextWidth;
+    private float mTextHeight;
 
 
     public CharboardView(Context context) {
         super(context);
-        init(null, 0);
+        init(null, 0,context);
     }
 
     public CharboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs, 0);
+        init(attrs, 0,context);
     }
 
     public CharboardView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs, defStyle);
+        init(attrs, defStyle,context);
     }
 
     //initialize local attributes and variables
-    private void init(AttributeSet attrs, int defStyle) {
+    private void init(AttributeSet attrs, int defStyle, Context context) {
         //set up local variable
         board = new Board();
+        //preload image
+         charmA= BitmapFactory.decodeResource(getResources(),R.drawable.charm_a);
+         charmNa= BitmapFactory.decodeResource(getResources(),R.drawable.charm_na);
+         charmPurple = BitmapFactory.decodeResource(getResources(),R.drawable.charm_purple);
+         charmBlue = BitmapFactory.decodeResource(getResources(),R.drawable.charm_blue);
+         charmGreen= BitmapFactory.decodeResource(getResources(),R.drawable.charm_green);
+         charmRed= BitmapFactory.decodeResource(getResources(),R.drawable.charm_red);
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.CharboardView, defStyle, 0);
@@ -126,10 +136,17 @@ public class CharboardView extends View {
                 getWidth()*2/10,
                 getHeight()*8/10,
                 mTextPaint);
-//        canvas.drawText("Highest: " + Integer.toString(board.highestScore),
+//        canvas.drawText("Highest: " + Integer.toString(board.getHighestScore()),
 //                getWidth()*2/10,
 //                getHeight()*9/10,
 //                mTextPaint);
+
+        //@android:drawable/ic_menu_revert
+        if (mExampleDrawable != null) {
+            mExampleDrawable.setBounds(paddingLeft, paddingTop,
+                    paddingLeft + contentWidth, paddingTop + contentHeight);
+            mExampleDrawable.draw(canvas);
+        }
 
         //Draw on top of background
         if(board!=null){
@@ -163,19 +180,32 @@ public class CharboardView extends View {
             return R.drawable.charm_na;
     }
 
+    private Bitmap getBitmap(int num){
+        if(num==1)
+            return charmA;
+        else if(num==2)
+            return charmPurple;
+        else if(num==3)
+            return charmRed;
+        else if(num==4)
+            return charmBlue;
+        else if(num==5)
+            return charmGreen;
+        else
+            return charmNa;
+    }
+
     public void putBoard(int num, int x, int y,Canvas canvas){
-        int id;
-        id= getId(num);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(getBitmap(num), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
     }
 
     public void putCharm(int num, int position,Canvas canvas){
         int id;
         id= getId(num);
         if(position==0)
-            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/8, getWidth()/8, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
+            canvas.drawBitmap(Bitmap.createScaledBitmap(getBitmap(num), getWidth()/8, getWidth()/8, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
         else
-            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
+            canvas.drawBitmap(Bitmap.createScaledBitmap(getBitmap(num), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
     }
 
 
