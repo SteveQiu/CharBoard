@@ -122,14 +122,14 @@ public class CharboardView extends View {
 
         //************************START OF GAME GRAPHICS***********************
 
-        canvas.drawText("Score: "+ Integer.toString(board.score),
+        canvas.drawText("Score: "+ Integer.toString(board.getScore()),
                 getWidth()*2/10,
                 getHeight()*8/10,
                 mTextPaint);
-        canvas.drawText("Highest: " + Integer.toString(board.highestScore),
-                getWidth()*2/10,
-                getHeight()*9/10,
-                mTextPaint);
+//        canvas.drawText("Highest: " + Integer.toString(board.highestScore),
+//                getWidth()*2/10,
+//                getHeight()*9/10,
+//                mTextPaint);
 
         //Draw on top of background
         if(board!=null){

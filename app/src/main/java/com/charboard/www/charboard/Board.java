@@ -5,8 +5,7 @@ package com.charboard.www.charboard;
  */
 
 public class Board {
-    public int score=0;
-    public int highestScore=0;
+    private int score=0;
     protected int[][] board;
     static int na = 0;
     static int a= 1;
@@ -19,6 +18,10 @@ public class Board {
         board= new int[5][5];
         board[2][2]= 1;
         placeCharm(2,2,colour);
+    }
+
+    public int getScore(){
+        return score;
     }
 
     public void set(int num1, int num2, int colour){
