@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class Charm {
 
-    int[] colour;
-    Random rand;
+    private int[] colour;
+    private Random rand;
 
     public Charm(){
         colour = new int[7];
