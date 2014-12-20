@@ -3,7 +3,6 @@ package com.charboard.www.charboard;
 /**
  * Created by Steve on 12/17/2014.
  */
-
 import java.util.Random;
 
 public class Charm {

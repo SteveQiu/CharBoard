@@ -28,27 +28,27 @@ public class CharboardView extends View {
     private Drawable mExampleDrawable;
 
     private TextPaint mTextPaint;
-    private float mTextWidth;
-    private float mTextHeight;
+    protected float mTextWidth;
+    protected float mTextHeight;
 
 
     public CharboardView(Context context) {
         super(context);
-        init(null, 0,context);
+        init(null, 0);
     }
 
     public CharboardView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs, 0,context);
+        init(attrs, 0);
     }
 
     public CharboardView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs, defStyle,context);
+        init(attrs, defStyle);
     }
 
     //initialize local attributes and variables
-    private void init(AttributeSet attrs, int defStyle, Context context) {
+    private void init(AttributeSet attrs, int defStyle) {
         //set up local variable
         board = new Board();
         // Load attributes
@@ -166,16 +166,16 @@ public class CharboardView extends View {
     public void putBoard(int num, int x, int y,Canvas canvas){
         int id;
         id= getId(num);
-        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
     }
 
     public void putCharm(int num, int position,Canvas canvas){
         int id;
         id= getId(num);
         if(position==0)
-            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/8, getWidth()/8, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
+            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/8, getWidth()/8, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
         else
-            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
+            canvas.drawBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), id), getWidth()/10, getWidth()/10, false), getWidth()*8/10, getHeight()*(position+2)/10, null);
     }
 
 

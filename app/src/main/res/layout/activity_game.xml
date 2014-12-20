@@ -11,8 +11,10 @@
          TextureView, etc. -->
     <com.charboard.www.charboard.CharboardView
         android:id="@+id/fullscreen_content" android:background="#fff"
-        android:layout_width="match_parent" android:layout_height="match_parent" android:paddingLeft="0dp"
-        android:paddingBottom="0dp" app:exampleDimension="24sp" app:exampleColor="#fff"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:paddingLeft="0dp" android:paddingRight="0dp"
+        android:paddingBottom="0dp" android:paddingTop="0dp"
+        app:exampleDimension="24sp" app:exampleColor="#fff"
         app:exampleString=""
         app:exampleDrawable="@drawable/background2"
         android:clickable="true"

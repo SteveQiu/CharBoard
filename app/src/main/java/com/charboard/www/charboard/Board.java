@@ -29,17 +29,11 @@ public class Board {
     }
 
     public boolean dropAvailable(int num1, int num2){
-        if(board[num1][num2]== a)
-            return true;
-        else
-            return false;
+        return board[num1][num2] == a;
     }
 
     public boolean dropNotAvailable(int num1, int num2){
-        if(board[num1][num2]== na)
-            return true;
-        else
-            return false;
+        return board[num1][num2] == na;
     }
 
     public void addPoint(){
