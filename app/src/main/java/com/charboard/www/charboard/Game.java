@@ -143,6 +143,12 @@ public class Game extends Activity {
         charboardView.invalidate();
     }
 
+    public void restartGame(View view){
+        charm = new Charm();
+        board = new Board(charm.pop());
+        updateCharBoard();
+    }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -186,9 +192,9 @@ public class Game extends Activity {
     @Override
     protected void onStop(){
         super.onStop();
-        charboardView.destroy();
-        board=null;
-        charm=null;
+//        charboardView.destroy();
+//        board=null;
+//        charm=null;
     }
 
     //Listen On touch
@@ -219,6 +225,8 @@ public class Game extends Activity {
             return false;
         }
     };
+
+
 
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
