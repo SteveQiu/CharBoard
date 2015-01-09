@@ -19,6 +19,7 @@ import android.view.View;
 public class CharboardView extends View {
 
     //custom variable
+    private static final int boxWidthDiv = 12;
     private Board board;
     private Charm charm;
     Bitmap charmA,charmNa,charmPurple,charmBlue,charmGreen,charmRed;
@@ -188,7 +189,7 @@ public class CharboardView extends View {
     }
 
     public void putBoard(int num, int x, int y,Canvas canvas){
-        canvas.drawBitmap(Bitmap.createScaledBitmap(getBitmap(num), getWidth()/10, getWidth()/10, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
+        canvas.drawBitmap(Bitmap.createScaledBitmap(getBitmap(num), getWidth()/boxWidthDiv, getWidth()/boxWidthDiv, false), getWidth()*(x+2)/10, getHeight()*(y+2)/10, null);
     }
 
     public void putCharm(int num, int position,Canvas canvas){
